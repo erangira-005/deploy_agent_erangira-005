@@ -7,10 +7,6 @@ if [ -z "$1" ]; then
 fi
 
 INPUT=$1
-
-
-
-
 PROJECT_DIR="attendance_tracker_${INPUT}"
 
 echo "Project directory will be: $PROJECT_DIR"
@@ -50,7 +46,7 @@ mkdir "$PROJECT_DIR/reports"
 echo "Project structure created successfully."
 
 
-# ✅ Correct CSV Format (Comma-separated)
+# Created CSV file
 cat << EOF > "$PROJECT_DIR/Helpers/assets.csv"
 Email,Names,Attendance Count,Absence Count
 alice@example.com,Alice Johnson,14,1
@@ -73,7 +69,7 @@ cat << EOF > "$PROJECT_DIR/Helpers/config.json"
 EOF
 
 
-# Create attendance_checker.py (provided content assumed)
+# Create attendance_checker.py 
 cat << EOF > "$PROJECT_DIR/attendance_checker.py"
 
 import csv
@@ -137,10 +133,12 @@ if [ "$choice" == "y" ]; then
             if [ "$new_warning" -ge 1 ] && [ "$new_warning" -le 100 ]; then
                 break
             fi
-        fi
+        else        
 
         echo "Please enter a valid number between 1 and 100."
-    done
+       fi    
+done
+
 
     # Safe numeric validation for Failure
     while true; do
@@ -159,6 +157,18 @@ if [ "$choice" == "y" ]; then
     sed -i "s/\"failure\": [0-9]*/\"failure\": $new_failure/" "$PROJECT_DIR/Helpers/config.json"
 
     echo "Thresholds updated successfully."
+
+
+
+ echo "  Warning : ${new_warning}%"
+    echo "  Failure : ${new_failure}%"
+    echo " Updated config.json:"
+    cat "attendance_tracker_${INPUT}/Helpers/config.json"
+    echo " "
+
+
+
+
 fi
 
 
