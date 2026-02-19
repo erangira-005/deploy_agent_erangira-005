@@ -115,7 +115,7 @@ reports/reports.log
 
 CSV & Configuration Files
 
-  assets.csv
+            assets.csv
   
 Email,Names,Attendance Count,Absence Count
 alice@example.com,Alice Johnson,14,1
@@ -160,8 +160,8 @@ Thresholds updated successfully.
 
 Trigger Archive Feature
 
-$ ./setup_project.sh dev
-# Press Ctrl + C before the script completes
+$ ./setup_project.sh dev 
+Press Ctrl + c before the script completes
 
 
         Observe:
