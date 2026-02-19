@@ -1,12 +1,15 @@
 #!/bin/bash
 
 # Ask the user for project name
-read -p "Enter project name: " INPUT
-
-if [ -z "$INPUT" ]; then
-    echo "You must provide a project name."
+if [ -z "$1" ]; then
+    echo "Usage: ./setup_project.sh <environment_name>"
     exit 1
 fi
+
+INPUT=$1
+
+
+
 
 PROJECT_DIR="attendance_tracker_${INPUT}"
 
@@ -166,11 +169,16 @@ echo ""
 
 echo "[1] Checking Python installation..."
 
-if command -v python3 > /dev/null; then
-    echo "Python is installed "
+
+if python3 --version > /dev/null 2>&1; then
+  echo "Python is installed "
 else
     echo "Python is NOT installed "
 fi
+
+
+
+
 
 echo ""
 
